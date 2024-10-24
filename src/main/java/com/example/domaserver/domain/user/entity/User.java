@@ -1,10 +1,7 @@
 package com.example.domaserver.domain.user.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -27,4 +24,6 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Authority authority;
+
+
 }
