@@ -19,12 +19,6 @@ public class User {
 
     private String email;
 
-    private String toDayClean;
-
-    private int penaltyPoint;
-    private int cleanPoint;
-    private int rank;
-
     @Embedded
     private StudentNum studentNum;
 
