@@ -1,4 +1,8 @@
 server:
+  redis:
+    port: 6739
+    host: localhost
+
   port: 8090
   servlet:
     context-path: /
@@ -33,7 +37,7 @@ spring:
       port: ${REDIS_PORT}
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret: "your_secret_key_here"
 
 gauth:
   clientId: ${GAUTH_CLIENT}
