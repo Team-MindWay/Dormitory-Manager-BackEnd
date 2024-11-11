@@ -17,10 +17,9 @@ public class User {
     @Id
     @GeneratedValue(generator = "UUID4")
     private UUID id;
-
     private String name;
-
     private String email;
+    private int penaltyPoint;
 
     @Embedded
     private StudentNum studentNum;
