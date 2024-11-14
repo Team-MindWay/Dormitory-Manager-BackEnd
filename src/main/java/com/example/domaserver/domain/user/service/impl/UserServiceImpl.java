@@ -4,20 +4,16 @@ import com.example.domaserver.domain.user.entity.User;
 import com.example.domaserver.domain.user.repository.UserRepository;
 import com.example.domaserver.domain.user.service.UserService;
 import com.example.domaserver.global.annotation.ServiceWithTransaction;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.UUID;
 
+@RequiredArgsConstructor
 @ServiceWithTransaction
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Override
     public User findByUsername(String username) {
