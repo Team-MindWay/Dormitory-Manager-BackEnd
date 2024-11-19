@@ -3,7 +3,7 @@ package com.example.domaserver.domain.rank.service.impl;
 import com.example.domaserver.domain.rank.entity.Rank;
 import com.example.domaserver.domain.rank.service.GetTopRankingService;
 import com.example.domaserver.global.annotation.ServiceWithReadOnlyTransactional;
-import com.example.domaserver.global.annotation.ServiceWithTransaction;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 
@@ -11,18 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-
-@ServiceWithTransaction
 @ServiceWithReadOnlyTransactional
+@RequiredArgsConstructor
 public class GetTopRankingServiceImpl implements GetTopRankingService {
 
     private static final String GET_TOP_RANKING = "getTopRanking";
 
     private final RedisTemplate redisTemplate;
-
-    public GetTopRankingServiceImpl(RedisTemplate redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
 
     public List<Rank> getTopRanking(int topN) {
         Set<ZSetOperations.TypedTuple<Long>> rankedUsers =
