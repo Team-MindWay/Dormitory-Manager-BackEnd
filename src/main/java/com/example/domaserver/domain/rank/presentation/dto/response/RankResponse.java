@@ -10,6 +10,7 @@ import java.util.UUID;
 public class RankResponse {
     private UUID Id;
     private String name;
+    private String profileImageUrl;
     private int penaltyPoints;
     private double RankScore;
 }
