@@ -16,6 +16,7 @@ public class User {
     private UUID id;
     private String name;
     private String email;
+    private String profileImageUrl;
     private int penaltyPoint;
 
     @Embedded
@@ -23,6 +24,4 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Authority authority;
-
-
 }
