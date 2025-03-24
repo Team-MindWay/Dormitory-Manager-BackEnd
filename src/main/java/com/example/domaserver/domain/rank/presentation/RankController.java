@@ -1,7 +1,7 @@
 package com.example.domaserver.domain.rank.presentation;
 
-
 import com.example.domaserver.domain.rank.entity.Rank;
+import com.example.domaserver.domain.rank.presentation.dto.response.RankResponse;
 import com.example.domaserver.domain.rank.service.GetRankingService;
 import com.example.domaserver.domain.rank.service.GetTopRankingService;
 import com.example.domaserver.domain.rank.service.UpdateRankingService;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/home")
 public class RankController {
-
     private final GetRankingService getRankingService;
     private final GetTopRankingService getTopRankingService;
     private final UpdateRankingService updateRankingService;
@@ -29,9 +29,9 @@ public class RankController {
     private final JwtService jwtService;
 
     @GetMapping("/rank")
-    public ResponseEntity<List<Rank>> getRanks() {
+    public ResponseEntity<List<RankResponse>> getRanks() {
         List<Rank> topRanks = getTopRankingService.getTopRanking(25);
-        return ResponseEntity.ok(topRanks);
+        return ResponseEntity.ok(toRankResponses(topRanks));
     }
 
     @GetMapping("/my-rank")
@@ -41,4 +41,18 @@ public class RankController {
         return ResponseEntity.ok(rank);
     }
 
+    private List<RankResponse> toRankResponses(List<Rank> ranks) {
+        return ranks.stream()
+                .map(this::toRankResponse)
+                .collect(Collectors.toList());
+    }
+
+    private RankResponse toRankResponse(Rank rank) {
+        return RankResponse.builder()
+                .Id(rank.getUser().getId())
+                .name(rank.getUser().getUsername())
+                .penaltyPoints(rank.getPenaltyPoints())
+                .RankScore(rank.getRankScore())
+                .build();
+    }
 }
