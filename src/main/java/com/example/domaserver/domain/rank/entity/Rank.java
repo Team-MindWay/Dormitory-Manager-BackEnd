@@ -8,24 +8,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "rank_table")
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Rank {
-
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
-    private Long RankId;
-    private int PenaltyPoints;
-    private double RankScore;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long rankId;
+
+    private int penaltyPoints;
+    private double rankScore;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", columnDefinition = "CHAR(36)")
     private User user;
 
-    public Rank(Long rankId, Double rankScore) {
-        RankId = rankId;
-        RankScore = rankScore;
+    public Rank(Long rankId, User user, Double rankScore) {
+        this.rankId = rankId;
+        this.user = user;
+        this.rankScore = rankScore;
     }
 }
