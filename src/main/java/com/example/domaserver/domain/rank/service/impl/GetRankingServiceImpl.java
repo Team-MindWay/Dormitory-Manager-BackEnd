@@ -9,14 +9,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 @ServiceWithReadOnlyTransactional
 @RequiredArgsConstructor
 public class GetRankingServiceImpl implements GetRankingService {
-
     private static final String GET_RANKING = "getRank";
 
     private final RedisTemplate redisTemplate;
 
     public Long getRanking(User user) {
-        Long rank = redisTemplate.opsForZSet().rank(GET_RANKING, user.getId());
+        Long rank = redisTemplate.opsForZSet().reverseRank(GET_RANKING, user.getId().toString());
         return (rank != null) ? rank + 1 : null;
     }
-
 }
