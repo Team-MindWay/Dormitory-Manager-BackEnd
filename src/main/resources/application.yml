@@ -37,7 +37,7 @@ spring:
       port: ${REDIS_PORT}
 
 jwt:
-  secret: ${JWT_KEY}
+  secret: "your_secret_key_here"
 
 gauth:
   clientId: ${GAUTH_CLIENT}
