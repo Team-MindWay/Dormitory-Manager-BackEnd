@@ -4,6 +4,8 @@ import com.example.domaserver.domain.user.entity.User;
 import com.example.domaserver.domain.user.exception.NotFoundException;
 import com.example.domaserver.domain.user.exception.UserNotFoundException;
 import com.example.domaserver.domain.user.exception.UsernameNotFoundException;
+import com.example.domaserver.domain.user.exception.UserNotFoundException;
+import com.example.domaserver.domain.user.exception.UsernameNotFoundException;
 import com.example.domaserver.domain.user.repository.UserRepository;
 import com.example.domaserver.domain.user.service.UserService;
 import com.example.domaserver.global.annotation.ServiceWithTransaction;
