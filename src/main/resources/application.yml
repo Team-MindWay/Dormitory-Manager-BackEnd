@@ -3,7 +3,7 @@ server:
     port: 6739
     host: localhost
 
-  port: 8090
+  port: 8080
   servlet:
     context-path: /
     encoding:
@@ -13,7 +13,7 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.mariadb.jdbc.Driver
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
