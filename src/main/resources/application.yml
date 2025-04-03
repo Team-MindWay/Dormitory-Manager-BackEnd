@@ -1,5 +1,9 @@
 server:
-  port: 8090
+  redis:
+    port: 6739
+    host: localhost
+
+  port: 8080
   servlet:
     context-path: /
     encoding:
@@ -9,7 +13,7 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.mariadb.jdbc.Driver
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
@@ -33,9 +37,10 @@ spring:
       port: ${REDIS_PORT}
 
 jwt:
-  secret: ${JWT_SECRET}
+  secret: "your_secret_key_here"
 
 gauth:
   clientId: ${GAUTH_CLIENT}
   clientSecret: ${GAUTH_SECRET}
   redirectUri: ${GAUTH_REDIRECT_URI}
+

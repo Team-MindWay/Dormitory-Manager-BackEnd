@@ -13,17 +13,16 @@ import java.util.UUID;
 public class User {
     @Id
     @GeneratedValue(generator = "UUID4")
+    @Column(length = 36) 
     private UUID id;
 
-    private String name;
-
+    private String username;
     private String email;
+    private String password;
 
     @Embedded
     private StudentNum studentNum;
 
     @Enumerated(EnumType.STRING)
     private Authority authority;
-
-
 }
